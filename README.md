@@ -34,6 +34,7 @@ A Python-based application that fetches a Shopify store’s brand insights **wit
 ---
 
 ## 📂 Project Structure
+
 shopify-insights-fetcher/
 ├── app/
 │ ├── main.py # FastAPI application entrypoint
@@ -50,4 +51,4 @@ shopify-insights-fetcher/
 ├── .env # Environment variables (e.g., DATABASE_URL)
 ├── requirements.txt # Python dependencies
 ├── README.md # Project documentation
-└── run.sh # Script to run the server (optional)
+└── run.sh / start.sh # Script to run the server (optional)
