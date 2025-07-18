@@ -10,7 +10,7 @@ A Python-based application that fetches a Shopify store’s brand insights **wit
 
 Uploading Screen-Recording (5).mp4…
 
-
+---
 
 ## 📌 Features
 
