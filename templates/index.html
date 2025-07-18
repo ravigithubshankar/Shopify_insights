@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopify Insights Fetcher</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f8fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      font-size: 16px;
+    }
+
+    input[type="text"]:focus {
+      border-color: #007bff;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #results {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 800px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      white-space: pre-wrap;
+      font-size: 14px;
+      color: #333;
+      overflow-x: auto;
+    }
+
+    #error-popup {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #ff4d4f;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .loading {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shopify Insights Fetcher</h1>
+
+  <div class="input-group">
+    <input type="text" id="website_url" placeholder="Enter Shopify store URL (e.g. https://example.myshopify.com)">
+  </div>
+
+  <button onclick="fetchInsights()">Fetch Insights</button>
+  <div class="loading" id="loading" style="display:none;">Fetching insights, please wait...</div>
+
+  <pre id="results"></pre>
+
+  <div id="error-popup"></div>
+
+  <script>
+    function showError(message) {
+      const popup = document.getElementById("error-popup");
+      popup.innerText = message;
+      popup.style.display = "block";
+      setTimeout(() => {
+        popup.style.display = "none";
+      }, 5000);
+    }
+
+    async function fetchInsights() {
+      const url = document.getElementById("website_url").value.trim();
+      const resultsBox = document.getElementById("results");
+      const loading = document.getElementById("loading");
+
+      resultsBox.innerText = "";
+      if (!url || !url.startsWith("http")) {
+        showError("Please enter a valid Shopify store URL.");
+        return;
+      }
+
+      loading.style.display = "block";
+
+      try {
+        const response = await fetch("/fetch-insights", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ website_url: url })
+        });
+
+        const result = await response.json();
+        loading.style.display = "none";
+
+        if (!response.ok || result.detail) {
+          showError(result.detail || "Something went wrong. Please try again.");
+        } else {
+          resultsBox.innerText = JSON.stringify(result, null, 2);
+        }
+
+      } catch (error) {
+        loading.style.display = "none";
+        showError("Network error: " + error.message);
+      }
+    }
+  </script>
+</body>
+</html>
