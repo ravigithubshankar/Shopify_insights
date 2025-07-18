@@ -37,25 +37,26 @@ A Python-based application that fetches a Shopify store’s brand insights **wit
 shopify-insights-fetcher/
 │
 ├── app/
-│   ├── main.py                      # FastAPI application entrypoint
-│   ├── models.py                    # Pydantic models and DB schemas
+│   ├── main.py                  # FastAPI application entrypoint
+│   └── models.py                # Pydantic models and DB schemas
 │
 ├── services/
-│   ├── ShopifyScraper.py           # Scraper for Shopify store data
-│   ├── competitor.py               # Competitor analysis using Google search
+│   ├── ShopifyScraper.py       # Scraper for Shopify store data
+│   └── competitor.py           # Competitor analysis using Google search
 │
 ├── db/
-│   ├── database.py                 # SQLAlchemy database connection and operations
+│   └── database.py             # SQLAlchemy database connection and operations
 │
 ├── templates/
-│   └── index.html                  # Frontend HTML (with interactive search bar)
+│   └── index.html              # Frontend HTML (with interactive search bar)
 │
 ├── static/
-│   └── style.css                   # Custom styles (optional)
+│   └── style.css               # Custom styles (optional)
 │
-├── .env                            # Environment variables (e.g., DATABASE_URL)
-├── requirements.txt                # Python dependencies
-├── README.md                       # Project documentation
-└── run.sh / start.sh               # Script to run the server (optional)
+├── .env                        # Environment variables (e.g., DATABASE_URL)
+├── requirements.txt            # Python dependencies
+├── README.md                   # Project documentation
+└── run.sh / start.sh           # Script to run the server (optional)
+
 
 
