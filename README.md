@@ -43,3 +43,14 @@ A Python-based application that fetches a Shopify store’s brand insights **wit
 git clone https://github.com/ravigithubshankar/shopify-insights-fetcher.git
 cd shopify-insights-fetcher
 
+### 🐍 2. Create and activate a virtual environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+### ▶️ Running the App
+```bash
+uvicorn app.main:app --reload
+
+
