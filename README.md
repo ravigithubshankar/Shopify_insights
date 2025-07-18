@@ -1,6 +1,6 @@
 # 🛍️ Shopify Insights Fetcher
 
-A Python-based application that fetches a Shopify store’s brand insights **without using the official Shopify API**, and structures them into an organized format. It also performs **BONUS competitor analysis** using Google search to extract similar insights from competitor Shopify stores.
+A Python-based application that fetches a Shopify store’s brand insights **without using the official Shopify API**, and structures them into an organized format. It also performs ** competitor analysis** using Google search to extract similar insights from competitor Shopify stores.
 
 ---
 
