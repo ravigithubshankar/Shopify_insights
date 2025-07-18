@@ -4,6 +4,10 @@ A Python-based application that fetches a Shopify store’s brand insights **wit
 
 ---
 
+## Demo 
+
+
+
 ## 📌 Features
 
 ✅ Fetch insights from any public Shopify store  
