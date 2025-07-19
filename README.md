@@ -8,7 +8,8 @@ A Python-based application that fetches a Shopify store’s brand insights **wit
 
 
 
-Uploading Screen-Recording (5).mp4…
+https://github.com/user-attachments/assets/d5b89842-5895-4f7b-bee2-67cc146e9342
+
 
 ---
 
